@@ -1,0 +1,668 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<title>ALLTOOLST BY ZIRUS</title>
+
+<style>
+:root{
+  --bg:#101010;
+  --panel:#1b1b1b;
+  --panel2:#222;
+  --text:#fff;
+  --muted:#999;
+  --border:#303030;
+  --orange:#ff8b2c;
+}
+body.light{
+  --bg:#f4f4f4;
+  --panel:#fff;
+  --panel2:#eee;
+  --text:#171717;
+  --muted:#666;
+  --border:#ddd;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  transition:.25s;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+header{
+  height:68px;
+  padding:0 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  background:var(--bg);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.logo{
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:-.7px;
+}
+.logo span{color:var(--orange)}
+.header-actions{display:flex;gap:9px}
+.icon-btn{
+  border:1px solid var(--border);
+  background:var(--panel);
+  color:var(--text);
+  border-radius:10px;
+  padding:10px 13px;
+}
+.page{
+  display:none;
+  min-height:calc(100vh - 68px);
+  animation:appear .4s ease;
+}
+.page.active{display:block}
+@keyframes appear{
+  from{opacity:0;transform:translateX(25px)}
+  to{opacity:1;transform:translateX(0)}
+}
+.container{width:min(1100px,90%);margin:auto}
+
+/* LOBBY */
+.hero{
+  text-align:center;
+  padding:65px 15px 45px;
+}
+.hero-label{
+  display:inline-block;
+  padding:7px 13px;
+  border:1px solid #8b4b1d;
+  color:var(--orange);
+  border-radius:30px;
+  font-size:12px;
+  letter-spacing:2px;
+}
+.hero h1{
+  font-size:clamp(42px,10vw,82px);
+  margin:20px 0 10px;
+  font-weight:950;
+  letter-spacing:-4px;
+}
+.hero h1 span{
+  color:var(--orange);
+}
+.hero p{
+  color:var(--muted);
+  line-height:1.7;
+  max-width:520px;
+  margin:0 auto;
+}
+.hero-line{
+  width:65px;
+  height:4px;
+  background:var(--orange);
+  border-radius:10px;
+  margin:25px auto;
+}
+.section-title{
+  font-size:19px;
+  margin:0 0 15px;
+}
+.sponsor{
+  background:linear-gradient(120deg,#2b170b,#45230e,#21140c);
+  border:1px solid #75421e;
+  border-radius:17px;
+  padding:23px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  color:white;
+}
+.sponsor small{
+  color:#ffb779;
+  letter-spacing:2px;
+  font-weight:bold;
+}
+.sponsor h2{
+  font-size:23px;
+  margin:9px 0;
+}
+.sponsor p{
+  color:#d0b6a1;
+  font-size:13px;
+  margin:0;
+}
+.sponsor a{
+  display:inline-block;
+  background:var(--orange);
+  color:#1b1008;
+  padding:12px 16px;
+  border-radius:9px;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+  white-space:nowrap;
+}
+.qris-section{margin-top:28px}
+.qris-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:20px;
+  border-radius:17px;
+  text-align:center;
+}
+.qris-card p{
+  color:var(--muted);
+  font-size:13px;
+}
+.qr-frame{
+  background:white;
+  padding:12px;
+  width:min(270px,100%);
+  margin:18px auto;
+  border-radius:12px;
+}
+.qr-frame img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+.qr-error{
+  color:#555;
+  font-size:13px;
+  padding:35px 8px;
+}
+.actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:13px 19px;
+  font-weight:bold;
+  font-size:13px;
+}
+.btn-primary{
+  background:var(--orange);
+  color:#17100a;
+}
+.btn-secondary{
+  background:var(--panel2);
+  border:1px solid var(--border);
+  color:var(--text);
+}
+.enter-wrap{
+  text-align:center;
+  padding:28px 0 34px;
+}
+.enter-btn{
+  width:min(340px,90%);
+  padding:17px;
+  border:0;
+  border-radius:12px;
+  color:#17100a;
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:1px;
+  background:linear-gradient(110deg,#ff9e48,#ff741b);
+  box-shadow:0 7px 25px #ff8b2c30;
+}
+.social-section{padding-bottom:45px}
+.social-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.social-card{
+  display:block;
+  text-decoration:none;
+  color:var(--text);
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:17px 10px;
+  text-align:center;
+}
+.social-card strong{display:block;margin-bottom:7px}
+.social-card small{color:var(--muted);font-size:11px}
+footer{
+  text-align:center;
+  border-top:1px solid var(--border);
+  padding:25px 10px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* TOOLS CENTER */
+.tools-hero{padding:35px 0 20px}
+.tools-hero h1{
+  font-size:clamp(28px,6vw,43px);
+  margin:0 0 8px;
+}
+.tools-hero h1 span{color:var(--orange)}
+.tools-hero p{color:var(--muted);font-size:14px}
+.search-box{
+  width:100%;
+  padding:16px;
+  background:var(--panel);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:12px;
+  outline:none;
+  margin:15px 0 22px;
+}
+.search-box:focus{border-color:var(--orange)}
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+  padding-bottom:40px;
+}
+.category{
+  border:1px solid var(--border);
+  background:var(--panel);
+  border-radius:14px;
+  padding:19px 15px;
+  cursor:pointer;
+  transition:.2s;
+  min-height:115px;
+}
+.category:hover{
+  transform:translateY(-3px);
+  border-color:var(--orange);
+}
+.category-icon{
+  font-size:25px;
+  margin-bottom:13px;
+}
+.category strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:6px;
+}
+.category small{
+  color:var(--muted);
+  font-size:11px;
+}
+.no-results{
+  color:var(--muted);
+  text-align:center;
+  padding:35px;
+  display:none;
+}
+.back-btn{
+  border:1px solid var(--border);
+  color:var(--text);
+  background:var(--panel);
+  padding:10px 14px;
+  border-radius:9px;
+  margin-top:20px;
+}
+#categoryDetail{padding-bottom:45px}
+.tool-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+.tool-item{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:15px;
+  color:var(--text);
+}
+.tool-item small{
+  display:block;
+  color:var(--muted);
+  margin-top:6px;
+  font-size:11px;
+}
+.detail-heading{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.detail-heading h2{margin:0}
+@media(max-width:700px){
+  .category-grid{grid-template-columns:repeat(2,1fr)}
+  .sponsor{display:block}
+  .sponsor a{margin-top:17px}
+  .social-grid{grid-template-columns:1fr}
+  .tool-list{grid-template-columns:1fr}
+  .hero h1{letter-spacing:-2px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">ALLTOOLST <span>BY ZIRUS</span></div>
+  <div class="header-actions">
+    <button class="icon-btn" onclick="toggleTheme()" title="Ganti tema">◐</button>
+    <button class="icon-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
+  </div>
+</header>
+
+<!-- LOBBY PAGE -->
+<main id="lobby" class="page active">
+
+  <section class="hero">
+    <div class="hero-label">WELCOME TO THE TOOL CENTER</div>
+    <h1>ALL<span>TOOLST</span></h1>
+    <p>
+      One Website. Thousands of Possibilities.<br>
+      Semua tools yang kamu butuhkan dalam satu tempat.
+    </p>
+    <div class="hero-line"></div>
+    <p>Explore. Create. Convert. Make Everything Easier.</p>
+  </section>
+
+  <div class="container">
+
+    <!-- SPONSOR -->
+    <section>
+      <div class="sponsor">
+        <div>
+          <small>SPONSOR AREA</small>
+          <h2>SPONSOR MURAH</h2>
+          <p>WA AJA LEWAT SALURAN</p>
+        </div>
+        <a href="https://whatsapp.com/channel/0029VbCW9o95fM5aGhcW3F0u"
+           target="_blank" rel="noopener">
+          KLIK UNTUK MENGHUBUNGI ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- QRIS -->
+    <section class="qris-section">
+      <h2 class="section-title">SUPPORT ZIRUS</h2>
+      <div class="qris-card">
+        <h3>Dukung Pengembangan ALLTOOLST</h3>
+        <p>Scan QRIS di bawah jika ingin memberikan dukungan.</p>
+
+        <div class="qr-frame">
+          <img id="qrImage"
+            src="https://iili.io/o9BcxV4.jpg"
+            alt="QRIS Support Zirus"
+            onerror="this.style.display='none';document.getElementById('qrError').style.display='block'">
+          <div id="qrError" class="qr-error" style="display:none">
+            QRIS belum bisa dimuat.<br>
+            Periksa alamat gambar QRIS.
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" onclick="downloadQR()">
+            DOWNLOAD QRIS
+          </button>
+          <button class="btn btn-secondary" onclick="qrFullscreen()">
+            FULL SCREEN
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASUK TOOLS -->
+    <div class="enter-wrap">
+      <button class="enter-btn" onclick="showTools()">
+        MASUK TOOLS →
+      </button>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <section class="social-section">
+      <h2 class="section-title">FOLLOW ZIRUS</h2>
+      <div class="social-grid">
+        <a class="social-card"
+          href="https://whatsapp.com/channel/0029VbCW9o95fM5aGhcW3F0u"
+          target="_blank" rel="noopener">
+          <strong>WHATSAPP</strong>
+          <small>Join Channel</small>
+        </a>
+        <a class="social-card"
+          href="https://tiktok.com/@zirusmc"
+          target="_blank" rel="noopener">
+          <strong>TIKTOK</strong>
+          <small>@zirusmc</small>
+        </a>
+        <a class="social-card"
+          href="https://www.instagram.com/zirus.01/"
+          target="_blank" rel="noopener">
+          <strong>INSTAGRAM</strong>
+          <small>@zirus.01</small>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>ALLTOOLST BY ZIRUS © 2026 · MADE FOR EVERYONE</footer>
+</main>
+
+<!-- TOOLS PAGE -->
+<main id="toolsPage" class="page">
+  <div class="container">
+
+    <section class="tools-hero">
+      <button class="back-btn" onclick="showLobby()">← KEMBALI KE LOBBY</button>
+      <h1>TOOLS <span>CENTER</span></h1>
+      <p>Temukan tools yang kamu butuhkan.</p>
+
+      <input id="toolSearch" class="search-box"
+        placeholder="Cari kategori tools..."
+        oninput="searchCategories()">
+    </section>
+
+    <div class="category-grid" id="categoryGrid"></div>
+    <div class="no-results" id="noResults">
+      Kategori tidak ditemukan.
+    </div>
+
+    <section id="categoryDetail" style="display:none">
+      <div class="detail-heading">
+        <div>
+          <div id="detailIcon" style="font-size:30px">🧰</div>
+        </div>
+        <div>
+          <h2 id="detailTitle">Category</h2>
+          <small id="detailDescription" style="color:var(--muted)"></small>
+        </div>
+      </div>
+
+      <div class="tool-list" id="toolList"></div>
+      <button class="back-btn" onclick="closeCategory()">← KEMBALI KE KATEGORI</button>
+    </section>
+
+  </div>
+
+  <footer>ALLTOOLST BY ZIRUS © 2026</footer>
+</main>
+
+<script>
+const categories = [
+ {
+  name:"Text Tools",icon:"📝",description:"Pengolahan teks",
+  tools:["Word Counter","Character Counter","Case Converter","Text Reverser","Remove Duplicate Lines","Remove Extra Spaces","Text Sorter","Find & Replace","Text Diff Checker","Lorem Ipsum Generator","Text Repeater","Morse Code Translator","Binary Text Converter","ASCII Converter"]
+ },
+ {
+  name:"Developer Tools",icon:"💻",description:"Coding dan programming",
+  tools:["JSON Formatter","JSON Validator","JSON Minifier","HTML Formatter","CSS Formatter","JavaScript Formatter","SQL Formatter","XML Formatter","YAML Formatter","Base64 Encoder","Base64 Decoder","URL Encoder","URL Decoder","JWT Decoder","UUID Generator","Regex Tester","Hash Generator","Markdown to HTML"]
+ },
+ {
+  name:"Image Tools",icon:"🖼️",description:"Edit dan konversi gambar",
+  tools:["Image Compressor","Image Resizer","Image Cropper","Image Rotator","Image Converter","JPG to PNG","PNG to JPG","WebP Converter","Image to Base64","Base64 to Image","Color Picker","Image Blur","Image Pixelate","Image Watermark Maker","Image Metadata Viewer","Favicon Generator"]
+ },
+ {
+  name:"Video Tools",icon:"🎬",description:"Pengolahan video",
+  tools:["Video Trimmer","Video Compressor","Video Converter","Video to GIF","Video Thumbnail Maker","Video Frame Extractor","Video Speed Changer","Video Aspect Ratio Converter","Video Watermark Editor"]
+ },
+ {
+  name:"Audio Tools",icon:"🎵",description:"Pengolahan suara",
+  tools:["Audio Trimmer","Audio Merger","Audio Converter","Audio Volume Changer","Audio Speed Changer","Audio Waveform Viewer","Audio Recorder"]
+ },
+ {
+  name:"PDF Tools",icon:"📄",description:"Pengolahan dokumen PDF",
+  tools:["Merge PDF","Split PDF","Compress PDF","PDF to JPG","JPG to PDF","PDF Rotator","PDF Page Organizer","PDF Page Numbering","PDF Watermark","PDF Text Extractor","PDF Viewer","PDF Signature"]
+ },
+ {
+  name:"File Tools",icon:"📁",description:"Kelola file",
+  tools:["ZIP Creator","ZIP Extractor","File Size Checker","File Type Checker","CSV Viewer","CSV Editor","JSON File Viewer","TXT File Viewer","File Hash Generator","File Metadata Viewer"]
+ },
+ {
+  name:"Converters",icon:"🔄",description:"Konversi format dan satuan",
+  tools:["Length Converter","Weight Converter","Temperature Converter","Area Converter","Volume Converter","Speed Converter","Time Converter","Storage Converter","Binary to Decimal","Decimal to Binary","RGB to HEX","HEX to RGB","JSON to CSV","CSV to JSON","Timestamp Converter"]
+ },
+ {
+  name:"Calculators",icon:"🧮",description:"Berbagai kalkulator",
+  tools:["Basic Calculator","Scientific Calculator","Percentage Calculator","Discount Calculator","Tax Calculator","Profit Calculator","Average Calculator","Ratio Calculator","Fraction Calculator","Area Calculator","Volume Calculator","Age Calculator","Date Difference Calculator","GPA Calculator"]
+ },
+ {
+  name:"QR & Barcode",icon:"▦",description:"Generator dan scanner",
+  tools:["QR Code Generator","QR Code Scanner","Wi-Fi QR Generator","WhatsApp QR Generator","Email QR Generator","Contact QR Generator","Location QR Generator","Barcode Generator","Barcode Reader"]
+ },
+ {
+  name:"Generators",icon:"✨",description:"Pembuat berbagai format",
+  tools:["Random Number Generator","Random Username Generator","Random Name Generator","Password Generator","PIN Generator","Color Palette Generator","Gradient Generator","CSS Button Generator","CSS Animation Generator","HTML Boilerplate Generator","robots.txt Generator","sitemap.xml Generator","Invoice Generator","Certificate Generator"]
+ },
+ {
+  name:"Productivity",icon:"⏱️",description:"Produktivitas harian",
+  tools:["Stopwatch","Countdown Timer","Digital Clock","World Clock","To-Do List","Notes App","Pomodoro Timer","Random Picker","Spin Wheel","Typing Speed Test","Daily Planner","Focus Timer"]
+ },
+ {
+  name:"SEO & Website",icon:"🌐",description:"Website utilities",
+  tools:["URL Parser","URL Cleaner","Meta Tag Generator","Open Graph Preview","robots.txt Generator","Sitemap Generator","Favicon Checker","HTTP Header Viewer","DNS Lookup","URL Redirect Checker"]
+ },
+ {
+  name:"Security",icon:"🛡️",description:"Keamanan digital",
+  tools:["Password Strength Checker","Hash Generator","Text Encryptor","Text Decryptor","File Checksum","JWT Decoder","URL Safety Checklist","Security Header Checker"]
+ },
+ {
+  name:"Education",icon:"🎓",description:"Tools pendidikan",
+  tools:["Typing Practice","Flashcard Maker","Study Timer","Random Quiz Picker","Grade Calculator","Scientific Calculator","Unit Converter","Citation Formatter","Word Counter"]
+ },
+ {
+  name:"Color & Design",icon:"🎨",description:"Warna dan desain",
+  tools:["Color Picker","Color Palette Generator","Gradient Generator","HEX to RGB","RGB to HEX","CSS Shadow Generator","CSS Border Radius Generator","CSS Glassmorphism Generator","CSS Button Generator"]
+ },
+ {
+  name:"Social Media",icon:"📱",description:"Media sosial",
+  tools:["Caption Formatter","Hashtag Counter","Username Generator","Bio Character Counter","Image Resizer","Thumbnail Maker","Text Formatter","Social Media Image Resizer"]
+ },
+ {
+  name:"Business",icon:"💼",description:"Bisnis dan administrasi",
+  tools:["Invoice Generator","Profit Calculator","Discount Calculator","Tax Calculator","Receipt Maker","Business Name Generator","Quotation Generator","Simple Budget Planner"]
+ },
+ {
+  name:"Data Tools",icon:"📊",description:"Data dan spreadsheet",
+  tools:["JSON to CSV","CSV to JSON","CSV Viewer","CSV Editor","Data Sorter","Duplicate Finder","Column Counter","JSON Formatter","Table Generator"]
+ },
+ {
+  name:"Date & Time",icon:"📅",description:"Tanggal dan waktu",
+  tools:["Age Calculator","Date Difference Calculator","Countdown Timer","Stopwatch","Unix Timestamp Converter","Time Zone Converter","Calendar","Date Format Converter"]
+ },
+ {
+  name:"Network",icon:"🌍",description:"Informasi jaringan",
+  tools:["IP Information Lookup","DNS Lookup","URL Parser","HTTP Header Viewer","Network Latency Checker","Public IP Checker"]
+ },
+ {
+  name:"Typography",icon:"🔤",description:"Font dan tipografi",
+  tools:["Font Previewer","Text to Unicode","Unicode Converter","Fancy Text Generator","Character Counter","Line Height Previewer","Font Pairing Preview"]
+ },
+ {
+  name:"3D & Animation",icon:"🧊",description:"Objek dan animasi",
+  tools:["CSS 3D Cube Generator","CSS Animation Preview","3D Text Preview","SVG Animation Preview","Loading Animation Generator"]
+ },
+ {
+  name:"Utilities",icon:"🔧",description:"Tools serbaguna",
+  tools:["Random Number","Clipboard Text Cleaner","QR Generator","Unit Converter","Screen Resolution Checker","Device Information","Color Picker","Timer"]
+ }
+];
+
+function renderCategories(){
+ const grid=document.getElementById("categoryGrid");
+ grid.innerHTML="";
+ categories.forEach((cat,index)=>{
+  const card=document.createElement("div");
+  card.className="category";
+  card.innerHTML=`
+   <div class="category-icon">${cat.icon}</div>
+   <strong>${cat.name}</strong>
+   <small>${cat.tools.length} tools dalam kategori</small>
+  `;
+  card.onclick=()=>openCategory(index);
+  grid.appendChild(card);
+ });
+}
+
+function searchCategories(){
+ const query=document.getElementById("toolSearch").value.toLowerCase();
+ let shown=0;
+ document.querySelectorAll(".category").forEach((card,index)=>{
+  const cat=categories[index];
+  const match=(cat.name+" "+cat.description+" "+cat.tools.join(" "))
+    .toLowerCase().includes(query);
+  card.style.display=match?"block":"none";
+  if(match)shown++;
+ });
+ document.getElementById("noResults").style.display=shown?"none":"block";
+}
+
+function openCategory(index){
+ const cat=categories[index];
+ document.getElementById("categoryGrid").style.display="none";
+ document.getElementById("toolSearch").style.display="none";
+ document.getElementById("categoryDetail").style.display="block";
+ document.getElementById("detailIcon").textContent=cat.icon;
+ document.getElementById("detailTitle").textContent=cat.name;
+ document.getElementById("detailDescription").textContent=cat.description;
+
+ const list=document.getElementById("toolList");
+ list.innerHTML="";
+ cat.tools.forEach(tool=>{
+  const item=document.createElement("div");
+  item.className="tool-item";
+  item.innerHTML=`<strong>${tool}</strong><small>Belum diaktifkan · Segera hadir</small>`;
+  list.appendChild(item);
+ });
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function closeCategory(){
+ document.getElementById("categoryGrid").style.display="grid";
+ document.getElementById("toolSearch").style.display="block";
+ document.getElementById("categoryDetail").style.display="none";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showTools(){
+ document.getElementById("lobby").classList.remove("active");
+ document.getElementById("toolsPage").classList.add("active");
+ window.scrollTo({top:0,behavior:"instant"});
+}
+
+function showLobby(){
+ document.getElementById("toolsPage").classList.remove("active");
+ document.getElementById("lobby").classList.add("active");
+ closeCategoryReset();
+ window.scrollTo({top:0,behavior:"instant"});
+}
+
+function closeCategoryReset(){
+ document.getElementById("categoryGrid").style.display="grid";
+ document.getElementById("toolSearch").style.display="block";
+ document.getElementById("categoryDetail").style.display="none";
+ document.getEleme
